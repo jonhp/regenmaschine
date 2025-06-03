@@ -37,7 +37,8 @@ class Watering(EndpointManager):
         if date and days:
             endpoint = f"{endpoint}/{date.strftime('%Y-%m-%d')}/{days}"
 
-        data = await self.controller.request("get", endpoint)
+        print(endpoint)
+        data = await self.controller.request("getlog", endpoint)
         return cast(list[dict[str, Any]], data["waterLog"]["days"])
 
     @EndpointManager.raise_on_gen1_controller
